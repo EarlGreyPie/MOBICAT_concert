@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>MOBICAT 연주회 링크</title>
+<style>
+  :root { --bg: #f6f5f2; --text: #1d1d1f; --muted: #5d5d63; --accent: #3f6fd8; --card: #ffffff; --line: #dedad3; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #17171a; --text: #ececf0; --muted: #a2a2ab; --accent: #7aa0ff; --card: #222227; --line: #34343b; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, "Malgun Gothic", sans-serif; }
+  main { max-width: 520px; margin: 12vh auto; padding: 0 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { color: var(--muted); margin: 8px 0; }
+  a.button { display: inline-block; margin-top: 12px; padding: 10px 18px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; }
+</style>
+</head>
+<body>
+<main><div class="card">
+  <h1 id="title">MOBICAT 연주회 링크</h1>
+  <p id="text">MOBICAT 을 여는 중입니다…</p>
+  <a class="button" id="open" href="#" hidden>MOBICAT 에서 열기</a>
+  <p>MOBICAT 0.9.3 이상이 이 PC 에 설치돼 있어야 합니다. 열리지 않으면 앱을 한 번 켠 뒤 다시 누르세요.</p>
+</div></main>
+<script>
+  // 링크의 # 뒤(회차 · 암호)는 서버로 가지 않는다. 모양이 맞을 때만 앱 링크로 넘긴다.
+  var match = /^#([0-9a-fA-F]{32})\.([0-9A-Za-z-]{16,19})$/.exec(location.hash);
+  var text = document.getElementById("text");
+  if (!match) {
+    text.textContent = "링크가 잘렸거나 모양이 다릅니다. 공지의 링크를 통째로 다시 누르세요.";
+  } else {
+    var app = "mobicat://join/" + match[1].toLowerCase() + "#" + match[2];
+    var button = document.getElementById("open");
+    button.href = app;
+    button.hidden = false;
+    text.textContent = "브라우저가 MOBICAT 을 열지 물으면 열기를 고르세요. 앱이 연주회 묶음을 받을지 한 번 더 묻습니다.";
+    location.href = app;
+  }
+</script>
+</body>
+</html>
