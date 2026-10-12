@@ -20,7 +20,7 @@
 
 ## 주최자라면
 
-이곳에 묶음을 올리는 방법은 MOBICAT 제작자에게 문의해 주세요.
+이곳에 묶음을 올리는 방법은 [MOBICAT 이슈](https://github.com/EarlGreyPie/MOBICAT_Releases/issues/new/choose)로 문의해 주세요.
 
 ---
 MOBICAT 은 넥슨 · 데브캣과 무관한 개인 제작 도구입니다.
